@@ -1,82 +1,65 @@
-//dom lookup
-
-const cont = document.querySelector('.container');
+const cont = document.querySelector('.container')
 const sub = document.querySelector('.sub')
-const form = document.querySelector('.form');
 
+class todo {
+    constructor(title, desc, due, imp) {
+        this.title = title,
+        this.desc = desc,
+        this.due = due,
+        this.imp = imp
+    }
 
-//dom manip
-function CreateTask (title, description, due, importance) {
-    return{
-        title: title,
-        desc: description,
-        due: due,
-        imp: importance,
-        comp: "N/A",
-
-        incimp () {
-        this.imp = this.imp + 1;
-        return this.imp
-        },
-
-        decimp () {
-        this.imp = this.imp -1;
-        return this.imp
+    get color() {
+        switch (this.imp){
+            case "1": return "#098765"
+            case "2": return '#987654'
+            case "3": return '#876543'
+            case "4": return '#765432'
+            case "5": return '#123456'
         }
-}};
+    }
+
+    card() {
+        let list = document.createElement('div')
+        list.classList.add('toDoList');
+
+        let cardTitle = document.createElement('p')
+        cardTitle.textContent=this.title;
+        cardTitle.classList.add('cardTitle')
+        list.appendChild(cardTitle);
+
+        let cardDesc = document.createElement('p')
+        cardDesc.textContent = this.desc;
+        cardDesc.classList.add('cardDesc')
+        list.appendChild(cardDesc);
+
+        let cardDue = document.createElement('p')
+        cardDue.textContent=this.due;
+        cardDue.classList.add('cardDue')
+        list.appendChild(cardDue);
+
+        let cardImp = document.createElement('p')
+        cardImp.textContent = this.imp
+        cardImp.classList.add('cardImp')
+        list.appendChild(cardImp);
+
+        let cardInc = document.createElement('button')
+        cardInc.textContent = "=>"
+        cardInc.classList.add('cardInc')
+
+        list.appendChild(cardInc)
+        list.style.backgroundColor = this.color
+
+        cont.appendChild(list)
+    }
+}
 
 sub.addEventListener('click', (e) => {
     e.preventDefault();
-    let check = validate()
-    if (check = true) {
-        let buff = create()
-        card(buff);
-    }
-
-});
-
- function validate () {
-     const imp = document.querySelector('#imp').value;
-     if ( imp <0 | imp > 5) {
-         alert("Importance must be between 1 and 5");
-         return false
-     }
-     else {
-         return true
-     }
- }
-function create() {
     const title = document.querySelector('#do').value;
     const desc = document.querySelector('#desc').value;
     const due = document.querySelector('#due').value;
     const imp = document.querySelector('#imp').value;
-    let task = CreateTask(title, desc, due, imp)
-    return task;
-}
-
-function card (buff) {
-    let list = document.createElement('div')
-    list.classList.add('toDoList');
-
-    let cardTitle = document.createElement('p')
-    cardTitle.textContent=buff.title;
-    list.appendChild(cardTitle);
-
-    let cardDesc = document.createElement('p')
-    cardDesc.textContent = buff.desc;
-    list.appendChild(cardDesc);
-
-    let cardDue = document.createElement('p')
-    cardDue.textContent=buff.due;
-    list.appendChild(cardDue);
-
-    let cardImp = document.createElement('p')
-    cardImp.textContent = buff.imp
-    list.appendChild(cardImp);
-
-    cont.appendChild(list)
-}
-
-function cardColor () {
-
-}
+    let task = new todo(title,desc,due,imp)
+    task.card()
+})
