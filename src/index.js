@@ -76,9 +76,20 @@ class todo {
             this.dec()
             list.style.backgroundColor = this.color
         })
+
+        let cardRem = document.createElement('button')
+        cardRem.textContent = 'trash'
+        cardRem.classList.add('cardRem')
+        cardRem.addEventListener('click', (e) => {
+            let parent = e.target.closest('.toDoList')
+            parent.remove()
+            Object.keys(this).forEach((i) => this[i] = null);
+            console.log(this)
+        })
         
         buttons.appendChild(cardInc)
         buttons.appendChild(cardDec)
+        buttons.appendChild(cardRem)
 
         list.appendChild(info)
         list.appendChild(buttons)
