@@ -19,16 +19,29 @@
           placeholder="Title"
           required
         />
-        <label for="desc" class="formDesc">description</label>
-        <input type="textbox" name="" id="desc" class="formDesc" required />
         <label for="due" class="formDue">due-date</label>
         <input type="date" name="" id="due" class="formDue" required />
         <label for="imp" class="formImp">importance 1-5</label>
-        <input type="number" id="imp" class="formImp" required />
+        <input
+          type="number"
+          id="imp"
+          class="formImp"
+          placeholder="Importance 1-5"
+          required
+        />
+        <label for="desc" class="formDesc">description</label>
+        <input
+          type="text"
+          name=""
+          id="desc"
+          class="formDesc"
+          placeholder="Description"
+          required
+        />
         <button type="submit" class="sub">Submit</button>
+        <button class="sortDue" type="button">Sort by Due</button>
+        <button class="sortImp" type="button">Sort by Importance</button>
       </form>
-      <button class="sortDue" type="button">Sort by Due</button>
-      <button class="sortImp" type="button">Sort by Importance</button>
     </div>
     <div class="container" id="container"></div>
   </body>

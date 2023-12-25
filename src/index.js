@@ -104,19 +104,20 @@ class todo {
 
 sub.addEventListener('click', (e) => {
     e.preventDefault();
-    const title = document.querySelector('#do').value;
-    const desc = document.querySelector('#desc').value;
-    const due = new Date(document.querySelector('#due').value);
+    let title = document.querySelector('#do').value;
+    let desc = document.querySelector('#desc').value;
+    let due = new Date(document.querySelector('#due').value);
+    let allInputs = document.querySelectorAll('input')
     const dueMonth = due.getUTCMonth() + 1
     const dueYear = due.getFullYear()
     const dueDate = due.getUTCDate()
     const combined = `${dueMonth}/${dueDate}/${dueYear}`
-    const imp = document.querySelector('#imp').value;
+    let imp = document.querySelector('#imp').value;
     let task = new todo(title,desc,combined,imp)
     console.log(task.due)
     order.push(task)
     task.card()
-    console.log(task)
+    allInputs.forEach(single => single.value = "")
 })
 
 sortDue.addEventListener('click', () => {
