@@ -11,19 +11,25 @@
     </div>
     <div class="info">
       <form action="" class="form">
-        <label for="do">Title</label>
-        <input type="text" id="do" required />
-        <label for="desc">description</label>
-        <input type="text" name="" id="desc" required />
-        <label for="due">due-date</label>
-        <input type="text" name="" id="due" required />
-        <label for="imp">importance 1-5</label>
-        <input type="number" id="imp" required />
+        <label for="do" class="formTitle">Title</label>
+        <input
+          type="text"
+          id="do"
+          class="formTitle"
+          placeholder="Title"
+          required
+        />
+        <label for="desc" class="formDesc">description</label>
+        <input type="textbox" name="" id="desc" class="formDesc" required />
+        <label for="due" class="formDue">due-date</label>
+        <input type="date" name="" id="due" class="formDue" required />
+        <label for="imp" class="formImp">importance 1-5</label>
+        <input type="number" id="imp" class="formImp" required />
         <button type="submit" class="sub">Submit</button>
-        <button class="sortDue">Sort by Due</button>
-        <button class="sortImp">Sort by Importance</button>
       </form>
+      <button class="sortDue" type="button">Sort by Due</button>
+      <button class="sortImp" type="button">Sort by Importance</button>
     </div>
-    <div class="container"></div>
+    <div class="container" id="container"></div>
   </body>
 </html>

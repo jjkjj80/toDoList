@@ -1,3 +1,6 @@
+import css from "./styles.css";
+
+
 const cont = document.querySelector('.container')
 const sub = document.querySelector('.sub')
 const colors = ['#a0c15a', '#add633', '#ffd934', '#ffb234', '#ff8c5a']
@@ -103,9 +106,44 @@ sub.addEventListener('click', (e) => {
     e.preventDefault();
     const title = document.querySelector('#do').value;
     const desc = document.querySelector('#desc').value;
-    const due = document.querySelector('#due').value;
+    const due = new Date(document.querySelector('#due').value);
+    const dueMonth = due.getUTCMonth() + 1
+    const dueYear = due.getFullYear()
+    const dueDate = due.getUTCDate()
+    const combined = `${dueMonth}/${dueDate}/${dueYear}`
     const imp = document.querySelector('#imp').value;
-    let task = new todo(title,desc,due,imp)
+    let task = new todo(title,desc,combined,imp)
+    console.log(task.due)
+    order.push(task)
     task.card()
     console.log(task)
+})
+
+sortDue.addEventListener('click', () => {
+
+    let newOrder = order.sort(
+        (p1, p2) => {
+            return new Date(p1.due) - new Date(p2.due)
+        }
+    )
+    while (cont.firstChild) {
+        cont.removeChild(cont.lastChild);
+      }
+    newOrder.forEach(function(e) {
+        return e.card()
+    })
+})
+
+sortImp.addEventListener('click', () => {
+    let newOrder = order.sort(
+        (p1, p2) => {
+            return p1.imp - p2.imp
+        }
+    )
+    while (cont.firstChild) {
+        cont.removeChild(cont.lastChild);
+      }
+    newOrder.forEach(function(e) {
+        return e.card()
+    })
 })

@@ -1,0 +1,32 @@
+.head {
+    color: red;
+    font-size: 100px;
+    margin: 0;
+    text-align: center;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    height: 250px
+}
+
+.formTitle {
+    grid-column: 1/3;
+    grid-row: 1/2;
+}
+
+.formDesc {
+    grid-column: 1/3;
+    grid-row: 2/3;
+}
+
+.formDue {
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+.formImp {
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
