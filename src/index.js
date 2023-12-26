@@ -21,6 +21,7 @@ class todo {
         if (this.imp < 5) {
             ++ this.imp 
             this.color = colors[this.imp - 1]
+            refresh()
         }
     }
 
@@ -28,6 +29,7 @@ class todo {
         if (this.imp > 1) {
             -- this.imp 
             this.color = colors[this.imp - 1]
+            refresh()
         }
     }
 
@@ -45,7 +47,7 @@ class todo {
         buttons.classList.add('cardButtons')
 
         let cardTitle = document.createElement('p')
-        cardTitle.textContent=this.title;
+        cardTitle.textContent=`Title: ${this.title}`;
         cardTitle.classList.add('cardTitle')
         info.appendChild(cardTitle);
 
@@ -55,12 +57,12 @@ class todo {
         info.appendChild(cardDesc);
 
         let cardDue = document.createElement('p')
-        cardDue.textContent=this.due;
+        cardDue.textContent= `Due date:${this.due}`;
         cardDue.classList.add('cardDue')
         info.appendChild(cardDue);
 
         let cardImp = document.createElement('p')
-        cardImp.textContent = this.imp
+        cardImp.textContent = `Importance rating: ${this.imp}`
         cardImp.classList.add('cardImp')
         info.appendChild(cardImp);
 
@@ -81,7 +83,7 @@ class todo {
         })
 
         let cardRem = document.createElement('button')
-        cardRem.textContent = 'trash'
+        cardRem.textContent = 'Delete'
         cardRem.classList.add('cardRem')
         cardRem.addEventListener('click', (e) => {
             let parent = e.target.closest('.toDoList')
@@ -122,29 +124,28 @@ sub.addEventListener('click', (e) => {
 
 sortDue.addEventListener('click', () => {
 
-    let newOrder = order.sort(
+    order.sort(
         (p1, p2) => {
             return new Date(p1.due) - new Date(p2.due)
         }
     )
-    while (cont.firstChild) {
-        cont.removeChild(cont.lastChild);
-      }
-    newOrder.forEach(function(e) {
-        return e.card()
-    })
+    refresh()
 })
 
 sortImp.addEventListener('click', () => {
-    let newOrder = order.sort(
+    order.sort(
         (p1, p2) => {
             return p1.imp - p2.imp
         }
     )
+    refresh()
+})
+
+function refresh() {
     while (cont.firstChild) {
         cont.removeChild(cont.lastChild);
       }
-    newOrder.forEach(function(e) {
+    order.forEach(function(e) {
         return e.card()
     })
-})
+}
