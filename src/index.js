@@ -33,11 +33,6 @@ class todo {
         }
     }
 
-    colorSelector() {
-        console.log(this.imp)
-        
-    }
-
     card() {
         let list = document.createElement('div')
         let info = document.createElement('div')
@@ -47,7 +42,7 @@ class todo {
         buttons.classList.add('cardButtons')
 
         let cardTitle = document.createElement('p')
-        cardTitle.textContent=`Title: ${this.title}`;
+        cardTitle.textContent= this.title;
         cardTitle.classList.add('cardTitle')
         info.appendChild(cardTitle);
 
@@ -110,6 +105,7 @@ sub.addEventListener('click', (e) => {
     let desc = document.querySelector('#desc').value;
     let due = new Date(document.querySelector('#due').value);
     let allInputs = document.querySelectorAll('input')
+    let tArea = document.querySelector('#desc')
     const dueMonth = due.getUTCMonth() + 1
     const dueYear = due.getFullYear()
     const dueDate = due.getUTCDate()
@@ -120,6 +116,7 @@ sub.addEventListener('click', (e) => {
     order.push(task)
     task.card()
     allInputs.forEach(single => single.value = "")
+    tArea.value =""
 })
 
 sortDue.addEventListener('click', () => {
@@ -146,6 +143,8 @@ function refresh() {
         cont.removeChild(cont.lastChild);
       }
     order.forEach(function(e) {
+        if (e.imp != null) {
         return e.card()
+        }
     })
 }

@@ -20,6 +20,8 @@
 .formDesc {
     grid-column: 1/4;
     grid-row: 2/3;
+    text-wrap: wrap;
+    font-size: medium;
 }
 
 .formDue {
@@ -37,4 +39,53 @@
 .sortImp {
     grid-column: 3/4;
     grid-row: 3/4;
+}
+
+
+
+.toDoList {
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    width: 95vw;
+}
+.cardInfo {
+    flex: 3;
+}
+.cardButtons {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 10px;
+    align-items: end;
+    text-align: end;
+
+}
+
+.cardTitle {
+    text-align: center;
+    margin-top: 0;
+    font-weight: bold;
+    font-size: large;
+}
+.cardDesc {
+    text-wrap: wrap;
+}
+.cardDue {
+    display: inline;
+    margin-right: 25%;
+}
+.cardImp {
+    display: inline;
+}
+.cardInc {
+    width: 75px;
+    
+}
+.cardDec {
+    width: 75px;
+}
+.cardRem {
+    width: 75px;
 }
